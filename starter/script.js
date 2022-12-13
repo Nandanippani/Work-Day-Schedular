@@ -30,6 +30,13 @@ function getHour(hour) {
 }
 
 function createTimeBlock(hour) {
+
+    var schedulerEl = $('<label/>').attr('id', 'schedulerlocal');
+
+    schedulerEl.text('Your Schedule has been added to local storage');
+
+
+
     // create timeblock with row and time-block class
     var timeBlock = $('<div/>');
     timeBlock.addClass('row');
@@ -64,4 +71,12 @@ function createTimeBlock(hour) {
 function onSubmit(hour, textareaId) {
     var desc = $('#' + textareaId).val();   // read text from textarea
     localStorage.setItem(hour, desc);       // save text in localstorage with hour as key
+    $('#localEl').show();
+    $('#localEl').text('Your Schedule has been saved');
+    setTimeout(function () {
+        $('#localEl').fadeOut(500);
+    }, 1000);
+
 }
+
+
